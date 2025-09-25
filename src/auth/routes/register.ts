@@ -12,7 +12,7 @@ router.post('/register', async (req, res) => {
     const { name, email, password } = req.body;
 
     if (!name || !email || !password) {
-        return res.status(400).json({error: 'Some fields missing'})
+        return res.status(400).json({error: 'Some fields missing'});
     }
 
     if (!validEmail(email)) return res.status(400).json({error: 'Email not valid'});
