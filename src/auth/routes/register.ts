@@ -30,7 +30,7 @@ router.post('/register', async (req, res) => {
             return res.status(400).json({error:'User already exists'});
         }
 
-        const user = new User(name, email, passwordHash);
+        const user = new User(name, email, 'local', {passwordHash});
 
         const result = await usersCollection.insertOne(user);
 
@@ -38,8 +38,8 @@ router.post('/register', async (req, res) => {
             message: 'User created susccesfully',
             user: {
                 _id: result.insertedId,
-                name: user.name,
-                email: user.email,
+                name,
+                email,
             }
         })
     } catch (error) {

@@ -2,6 +2,7 @@ import { Router } from 'express';
 import registerRouter from './auth/routes/register';
 import loginRouter from './auth/routes/login';
 import refreshRouter from './auth/routes/refresh';
+import googleRouter from './auth/googleAuth/auth';
 import { authMiddleware } from './middlewares/auth';
 
 const router = Router();
@@ -132,5 +133,7 @@ router.use('/auth', registerRouter);
 router.use('/auth', loginRouter);
 
 router.use('/auth', refreshRouter);
+
+router.use('/auth', googleRouter);
 
 export default router;
